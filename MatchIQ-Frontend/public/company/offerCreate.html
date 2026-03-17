@@ -1,0 +1,110 @@
+<!-- ─── Create / Edit Offer View Fragment ─── -->
+<header class="main__header">
+    <div>
+        <h1 id="form-title">Create Offer</h1>
+        <p class="muted" id="form-subtitle">Fill out the form to publish a new job offer.</p>
+    </div>
+</header>
+
+<form id="offer-form" class="form-card" novalidate>
+    <!-- Hidden ID for edit mode -->
+    <input type="hidden" id="of-id" />
+
+    <!-- Job Title -->
+    <div class="form-group">
+        <label for="of-title">Job Title</label>
+        <input class="form-input" id="of-title" type="text" placeholder="E.g.: Senior Frontend Developer" required />
+        <span class="form-error" id="err-title">Title is required.</span>
+    </div>
+
+    <!-- Categories & Technologies -->
+    <div class="form-row">
+        <!-- Categories (multi-select dropdown) -->
+        <div class="form-group">
+            <label>Job Categories</label>
+            <div class="multiselect" id="categories-multiselect">
+                <div class="multiselect__control" id="categories-control">
+                    <div class="multiselect__tags" id="categories-tags">
+                        <span class="multiselect__placeholder">Select categories…</span>
+                    </div>
+                    <span class="multiselect__arrow">▾</span>
+                </div>
+                <div class="multiselect__dropdown" id="categories-dropdown">
+                    <div class="multiselect__options" id="categories-options"></div>
+                </div>
+            </div>
+            <span class="form-error" id="err-categories">Add at least one category.</span>
+        </div>
+
+        <!-- Technologies (multi-select dropdown) -->
+        <div class="form-group">
+            <label>Required Technologies</label>
+            <div class="multiselect" id="skills-multiselect">
+                <div class="multiselect__control" id="skills-control">
+                    <div class="multiselect__tags" id="skills-tags">
+                        <span class="multiselect__placeholder">Select a category first</span>
+                    </div>
+                    <span class="multiselect__arrow">▾</span>
+                </div>
+                <div class="multiselect__dropdown" id="skills-dropdown">
+                    <div class="multiselect__options" id="skills-options"></div>
+                </div>
+            </div>
+            <span class="form-error" id="err-skills">Add at least one technology.</span>
+        </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="form-group">
+        <label for="of-experience">Minimum Experience (years)</label>
+        <input class="form-input" id="of-experience" type="number" min="0" max="30" value="1" required />
+    </div>
+
+    <!-- English & Modality -->
+    <div class="form-row">
+        <div class="form-group">
+            <label for="of-english">Required English Level</label>
+            <select class="form-select" id="of-english" required>
+                <option value="">Select</option>
+                <option value="A1">A1 — Basic</option>
+                <option value="A2">A2 — Elementary</option>
+                <option value="B1">B1 — Intermediate</option>
+                <option value="B2">B2 — Upper Intermediate</option>
+                <option value="C1">C1 — Advanced</option>
+                <option value="C2">C2 — Native/Bilingual</option>
+            </select>
+            <span class="form-error" id="err-english">Select an English level.</span>
+        </div>
+        <div class="form-group">
+            <label for="of-modality">Work Modality</label>
+            <select class="form-select" id="of-modality" required>
+                <option value="">Select</option>
+                <option value="remote">Remote</option>
+                <option value="hybrid">Hybrid</option>
+                <option value="onsite">Onsite</option>
+            </select>
+            <span class="form-error" id="err-modality">Select the modality.</span>
+        </div>
+    </div>
+
+    <!-- Salary -->
+    <div class="form-group">
+        <label for="of-salary">Salary (COP)</label>
+        <input class="form-input" id="of-salary" type="text" inputmode="numeric" placeholder="E.g.: 8.000.000"
+            autocomplete="off" />
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+        <label for="of-description">Job Description</label>
+        <textarea class="form-textarea" id="of-description" rows="5"
+            placeholder="Describe responsibilities, benefits, and additional requirements..." required></textarea>
+        <span class="form-error" id="err-description">Description is required.</span>
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" class="btn btn--primary btn--full" id="btn-submit">
+        <span class="btn__text">Save Offer</span>
+        <span class="btn__spinner"></span>
+    </button>
+</form>

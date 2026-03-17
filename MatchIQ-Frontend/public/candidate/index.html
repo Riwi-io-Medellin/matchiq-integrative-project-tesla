@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>MatchIQ · Candidate Panel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../../src/styles/company.css" />
+    <link rel="stylesheet" href="../../src/styles/candidate-dashboard.css" />
+    <script>
+        // Apply saved theme BEFORE paint to prevent flash
+        (function() {
+            const saved = localStorage.getItem('matchiq_theme');
+            if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        })();
+    </script>
+</head>
+
+<body>
+    <div class="app" id="mainLayout" style="display: none;">
+
+        <!-- ─── SIDEBAR ─── -->
+        <aside class="sidebar">
+            <div class="sidebar__top">
+                <a class="brand" href="#/dashboard">
+                    <img class="brand__mark" src="../../src/assets/iconoMatchIQ.png" alt="MatchIQ logo" />
+                </a>
+
+                <nav class="nav" id="sidebar-nav">
+                    <a class="nav__item is-active" href="#/dashboard" data-route="dashboard">
+                        <span class="nav__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V-10h-8v10zm0-18v6h8V3h-8z" />
+                            </svg>
+                        </span>
+                        <span>Dashboard</span>
+                    </a>
+
+                    <a class="nav__item" href="#/profile" data-route="profile">
+                        <span class="nav__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z" />
+                            </svg>
+                        </span>
+                        <span>My Profile</span>
+                    </a>
+
+                    <a class="nav__item" href="#/tests" data-route="tests">
+                        <span class="nav__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+                            </svg>
+                        </span>
+                        <span>Tests</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div>
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="theme-toggle" type="button" title="Toggle dark/light mode">
+                    <span class="theme-toggle__icon">
+                        <span class="theme-toggle__icon--moon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+                        </span>
+                        <span class="theme-toggle__icon--sun">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/></svg>
+                        </span>
+                    </span>
+                    <span class="theme-toggle__label">Dark mode</span>
+                </button>
+
+                <button class="nav__item nav__item--logout" id="btn-logout">
+                    <span class="nav__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z" />
+                        </svg>
+                    </span>
+                    <span>Log out</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- ─── MAIN (dynamic content) ─── -->
+        <main class="main" id="app">
+            <!-- Router injects views here -->
+        </main>
+
+        <!-- ── ONBOARDING OVERLAY ── -->
+        <div class="onboarding-overlay onboarding--hidden" id="onboardingOverlay">
+            <div class="onboarding-card">
+                <div class="onboarding-header">
+                    <img src="../../src/assets/iconoMatchIQ-Imag.png" alt="MatchIQ" class="onboarding-logo" />
+                    <h2>Welcome to MatchIQ!</h2>
+                    <p>Complete your profile to start receiving offers matching your skills.</p>
+                </div>
+
+                <!-- Progress bar -->
+                <div class="ob-progress">
+                    <div class="ob-progress__bar" id="ob-progressBar" style="width: 33%"></div>
+                </div>
+
+                <div class="alert" id="onboardingAlert" hidden role="alert"></div>
+
+                <!-- Step 1: Personal info -->
+                <div id="ob-step-1" class="ob-step">
+                    <div class="ob-step__header">
+                        <span class="ob-step__number">Step 1 of 3 — Personal Information</span>
+                        <h3>Tell us about yourself</h3>
+                    </div>
+                    <div class="ob-form-grid">
+                        <div class="field">
+                            <label for="ob_firstName">First Name</label>
+                            <input id="ob_firstName" type="text" placeholder="John" />
+                        </div>
+                        <div class="field">
+                            <label for="ob_lastName">Last Name</label>
+                            <input id="ob_lastName" type="text" placeholder="Doe" />
+                        </div>
+                        <div class="field">
+                            <label for="ob_experience">Years of experience</label>
+                            <input id="ob_experience" type="number" min="0" placeholder="0" />
+                        </div>
+                        <div class="field">
+                            <label for="ob_seniority">Seniority level</label>
+                            <select id="ob_seniority">
+                                <option value="">Select level</option>
+                                <option value="junior">Junior</option>
+                                <option value="mid">Mid</option>
+                                <option value="senior">Senior</option>
+                            </select>
+                        </div>
+                        <div class="field ob-field--full">
+                            <label for="ob_english">English level</label>
+                            <select id="ob_english">
+                                <option value="">Select level</option>
+                                <option value="A1">A1 — Beginner</option>
+                                <option value="A2">A2 — Elementary</option>
+                                <option value="B1">B1 — Intermediate</option>
+                                <option value="B2">B2 — Upper Intermediate</option>
+                                <option value="C1">C1 — Advanced</option>
+                                <option value="C2">C2 — Proficient</option>
+                            </select>
+                        </div>
+                        <div class="field ob-field--full">
+                            <label for="ob_github">GitHub Profile</label>
+                            <input id="ob_github" type="url" placeholder="https://github.com/username" />
+                        </div>
+                    </div>
+                    <div class="ob-step__actions">
+                        <button class="btn btn--primary" id="ob_nextStep1" type="button">Continue</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Categories -->
+                <div id="ob-step-2" class="ob-step ob-step--hidden">
+                    <div class="ob-step__header">
+                        <span class="ob-step__number">Step 2 of 3 — Specialization</span>
+                        <h3>What areas do you specialize in?</h3>
+                    </div>
+                    <div class="picker-grid" id="ob-categoriesPicker"></div>
+                    <div class="ob-step__actions">
+                        <button class="btn btn--ghost" id="ob_backStep2" type="button">Back</button>
+                        <button class="btn btn--primary" id="ob_nextStep2" type="button">Continue</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Skills -->
+                <div id="ob-step-3" class="ob-step ob-step--hidden">
+                    <div class="ob-step__header">
+                        <span class="ob-step__number">Step 3 of 3 — Skills</span>
+                        <h3>What are your skills?</h3>
+                    </div>
+                    <div class="picker-toolbar">
+                        <span class="picker-counter" id="ob-skillsCounter">0 skills selected</span>
+                        <button class="mini-link" id="ob-clearSkillsBtn" type="button">Clear</button>
+                    </div>
+                    <div class="picker-grid picker-grid--skills" id="ob-skillsPicker"></div>
+                    <div class="ob-step__actions">
+                        <button class="btn btn--ghost" id="ob_backStep3" type="button">Back</button>
+                        <button class="btn btn--primary" id="ob_saveBtn" type="button">Complete profile</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Toast container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Confirm modal overlay -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <h3 class="modal__title" id="modal-title"></h3>
+            <p class="modal__message" id="modal-message"></p>
+            <div class="modal__actions">
+                <button class="btn btn--ghost" id="modal-cancel">Cancel</button>
+                <button class="btn btn--primary" id="modal-confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit Confirmation Modal (Tests) -->
+    <dialog class="submit-confirm-modal" id="submitConfirmModal">
+      <div class="submit-confirm-modal__content">
+        <div class="submit-confirm-modal__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="var(--bg-800)" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <h3>Submit answers?</h3>
+        <p>Once submitted you will not be able to modify your answers. Make sure you have reviewed all the questions before continuing.</p>
+        <div class="submit-confirm-modal__actions">
+          <button class="btn btn--ghost" id="cancelSubmitBtn" type="button">Review again</button>
+          <button class="btn btn--primary" id="confirmSubmitBtn" type="button">Yes, submit answers</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script type="module" src="../../src/pages/candidate/app.js"></script>
+</body>
+
+</html>

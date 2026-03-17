@@ -1,0 +1,27 @@
+<!-- ─── Offers List View Fragment ─── -->
+<header class="main__header">
+    <div>
+        <h1>My Offers</h1>
+        <p class="muted">Manage all your published job offers.</p>
+    </div>
+    <div class="header__actions">
+        <a href="#/offers/create" class="btn btn--primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+            </svg>
+            New Offer
+        </a>
+    </div>
+</header>
+
+<!-- Status filters -->
+<div class="filters" id="offer-filters">
+    <button class="filter-btn is-active" data-filter="open">Open</button>
+    <button class="filter-btn" data-filter="closed">Closed</button>
+    <button class="filter-btn" data-filter="all">All</button>
+</div>
+
+<!-- Grid de ofertas -->
+<div class="offers-grid" id="offers-container">
+    <!-- JS renderiza las offer-cards aquí -->
+</div>

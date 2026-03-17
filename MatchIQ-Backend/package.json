@@ -1,0 +1,46 @@
+{
+  "name": "matchiq-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Logic frontend",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "seed:users": "node src/scripts/seedUsers.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/P-MatchIQ/MatchIQ-Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/P-MatchIQ/MatchIQ-Backend/issues"
+  },
+  "homepage": "https://github.com/P-MatchIQ/MatchIQ-Backend#readme",
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.6",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.10.1",
+    "nodemailer": "^8.0.2",
+    "openai": "^6.22.0",
+    "p-limit": "^7.3.0",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "pg": "^8.18.0",
+    "resend": "^6.9.3",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

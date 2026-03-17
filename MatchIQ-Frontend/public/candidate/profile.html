@@ -1,0 +1,139 @@
+<!-- ─── Profile Fragment ─── -->
+<header class="main__header">
+    <div>
+        <h1>My Profile</h1>
+        <p class="muted">Information used to generate your matches.</p>
+    </div>
+</header>
+
+<div class="alert" id="profileAlert" hidden role="alert"></div>
+
+<!-- ── Profile View ── -->
+<section class="panel profile-panel" id="profileViewSection">
+    <div class="panel__head">
+        <div>
+            <h3>Your profile</h3>
+        </div>
+        <button class="btn btn--primary" id="editProfileBtn" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1.003 1.003 0 000-1.42l-2.34-2.33a1.003 1.003 0 00-1.42 0l-1.83 1.83 3.75 3.75 1.84-1.83z"/></svg>
+            Edit profile
+        </button>
+    </div>
+
+    <div class="profile-grid" id="profileGrid">
+        <div class="profile-item">
+            <span class="profile-item__label">First Name</span>
+            <strong id="firstNameValue"><span class="skeleton skeleton--text"></span></strong>
+        </div>
+        <div class="profile-item">
+            <span class="profile-item__label">Last Name</span>
+            <strong id="lastNameValue"><span class="skeleton skeleton--text"></span></strong>
+        </div>
+        <div class="profile-item">
+            <span class="profile-item__label">Categories</span>
+            <div class="tags" id="categoriesTags"><span class="skeleton skeleton--tag"></span><span class="skeleton skeleton--tag"></span></div>
+        </div>
+        <div class="profile-item">
+            <span class="profile-item__label">Skills</span>
+            <div class="tags" id="skillsTags"><span class="skeleton skeleton--tag"></span><span class="skeleton skeleton--tag"></span><span class="skeleton skeleton--tag"></span></div>
+        </div>
+        <div class="profile-item">
+            <span class="profile-item__label">Experience</span>
+            <strong id="experienceValue"><span class="skeleton skeleton--text"></span></strong>
+        </div>
+        <div class="profile-item">
+            <span class="profile-item__label">English</span>
+            <strong id="englishValue"><span class="skeleton skeleton--text"></span></strong>
+        </div>
+        <div class="profile-item">
+            <span class="profile-item__label">Seniority</span>
+            <strong id="seniorityValue"><span class="skeleton skeleton--text"></span></strong>
+        </div>
+        <div class="profile-item">
+            <span class="profile-item__label">GitHub</span>
+            <strong id="githubValue"><span class="skeleton skeleton--text"></span></strong>
+        </div>
+    </div>
+</section>
+
+<!-- ── Edit Profile Form (hidden by default) ── -->
+<section class="panel profile-panel" id="profileEditSection" style="display: none;">
+    <div class="panel__head">
+        <div>
+            <h3>Edit profile</h3>
+            <p>Update your information to improve your matches.</p>
+        </div>
+    </div>
+
+    <form id="profileForm">
+        <div class="form-grid form-grid--single">
+
+            <div class="field-group" style="grid-template-columns: 1fr 1fr;">
+                <div class="field">
+                    <label for="firstNameInput">First Name</label>
+                    <input id="firstNameInput" type="text" placeholder="John" />
+                </div>
+                <div class="field">
+                    <label for="lastNameInput">Last Name</label>
+                    <input id="lastNameInput" type="text" placeholder="Doe" />
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Categories</label>
+                <small>Select one or more categories.</small>
+                <div class="picker-grid" id="categoriesPicker"></div>
+            </div>
+
+            <div class="field">
+                <label>Skills</label>
+                <small>Available skills depend on the selected categories.</small>
+                <div class="picker-toolbar">
+                    <span class="picker-counter" id="skillsCounter">0 skills selected</span>
+                    <button class="mini-link" id="clearSkillsBtn" type="button">Clear skills</button>
+                </div>
+                <div class="picker-grid picker-grid--skills" id="skillsPicker"></div>
+            </div>
+
+            <div class="field-group">
+                <div class="field">
+                    <label for="experienceInput">Years of experience</label>
+                    <input id="experienceInput" type="number" min="0" placeholder="3" />
+                </div>
+                <div class="field">
+                    <label for="englishInput">English level</label>
+                    <select id="englishInput">
+                        <option value="">Select</option>
+                        <option value="A1">A1</option>
+                        <option value="A2">A2</option>
+                        <option value="B1">B1</option>
+                        <option value="B2">B2</option>
+                        <option value="C1">C1</option>
+                        <option value="C2">C2</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="seniorityInput">Seniority</label>
+                    <select id="seniorityInput">
+                        <option value="">Select</option>
+                        <option value="junior">Junior</option>
+                        <option value="mid">Mid</option>
+                        <option value="senior">Senior</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="githubInput">GitHub Profile</label>
+                <input id="githubInput" type="url" placeholder="https://github.com/username" />
+            </div>
+        </div>
+
+        <div class="alert" id="profileFormAlert" hidden role="alert"></div>
+
+        <div class="form-actions">
+            <button class="btn btn--ghost" id="cancelProfileBtn" type="button">Cancel</button>
+            <button class="btn btn--primary" id="saveProfileBtn" type="submit">Save profile</button>
+        </div>
+    </form>
+</section>

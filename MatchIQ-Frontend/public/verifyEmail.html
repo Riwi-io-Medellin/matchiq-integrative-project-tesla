@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Verificar email — MatchIQ</title>
+  <link rel="stylesheet" href="../src/styles/login.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <div class="card">
+      <div class="brand">
+        <img src="../src/assets/iconoMatchIQ-Imag.png" alt="MatchIQ" class="brand__logo" />
+        <h1 class="brand__title">MatchIQ</h1>
+      </div>
+
+      <h2 class="card__title">Verifica tu email</h2>
+      <p class="card__subtitle">
+        Ingresa el código de 6 dígitos que enviamos a <strong id="emailDisplay"></strong>
+      </p>
+
+      <div id="error-banner" class="alert is-error" hidden></div>
+      <div id="success-banner" class="alert" hidden></div>
+
+      <div class="field">
+        <label for="code">Código de verificación</label>
+        <input
+          id="code"
+          type="text"
+          inputmode="numeric"
+          maxlength="6"
+          placeholder="123456"
+          autocomplete="one-time-code"
+        />
+      </div>
+
+      <button id="verifyBtn" class="btn btn--primary btn--full" type="button">
+        Verificar cuenta
+      </button>
+
+      <p class="card__footer">
+        ¿No recibiste el código?
+        <button id="resendBtn" class="link-btn" type="button">Reenviar código</button>
+      </p>
+    </div>
+  </div>
+
+  <script type="module" src="../src/pages/verifyEmail.js"></script>
+</body>
+</html>

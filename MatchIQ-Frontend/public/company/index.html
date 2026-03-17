@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MatchIQ · Company Panel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../../src/styles/company.css" />
+    <script>
+        // Apply saved theme BEFORE paint to prevent flash
+        (function() {
+            const saved = localStorage.getItem('matchiq_theme');
+            if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        })();
+    </script>
+</head>
+
+<body>
+    <div class="app">
+
+        <!-- ─── SIDEBAR (estática) ─── -->
+        <aside class="sidebar">
+            <div class="sidebar__top">
+                <a class="brand" href="#/dashboard">
+                    <img class="brand__mark" src="../../src/assets/iconoMatchIQ.png" alt="MatchIQ logo" />
+                </a>
+
+                <nav class="nav" id="sidebar-nav">
+                    <a class="nav__item is-active" href="#/dashboard" data-route="dashboard">
+                        <span class="nav__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8v-10h-8v10zm0-18v6h8V3h-8z" />
+                            </svg>
+                        </span>
+                        <span>Dashboard</span>
+                    </a>
+
+                    <a class="nav__item" href="#/offers/create" data-route="offers/create">
+                        <span class="nav__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                            </svg>
+                        </span>
+                        <span>Create Offer</span>
+                    </a>
+
+                    <a class="nav__item" href="#/offers" data-route="offers">
+                        <span class="nav__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" />
+                            </svg>
+                        </span>
+                        <span>My Offers</span>
+                    </a>
+
+                    <a class="nav__item" href="#/matches" data-route="matches">
+                        <span class="nav__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z" />
+                            </svg>
+                        </span>
+                        <span>Candidates</span>
+                    </a>
+
+                    <a class="nav__item" href="#/profile" data-route="profile">
+                        <span class="nav__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                            </svg>
+                        </span>
+                        <span>Profile</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div>
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="theme-toggle" type="button" title="Toggle dark/light mode">
+                    <span class="theme-toggle__icon">
+                        <span class="theme-toggle__icon--moon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+                        </span>
+                        <span class="theme-toggle__icon--sun">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/></svg>
+                        </span>
+                    </span>
+                    <span class="theme-toggle__label">Dark mode</span>
+                </button>
+
+                <button class="nav__item nav__item--logout" id="btn-logout">
+                    <span class="nav__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z" />
+                        </svg>
+                    </span>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- ─── MAIN (contenido dinámico) ─── -->
+        <main class="main" id="app">
+            <!-- El router inyecta aquí el contenido de cada vista -->
+        </main>
+
+    </div>
+
+    <!-- Toast container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Confirm modal (dialog) -->
+    <dialog class="confirm-dialog" id="confirm-dialog">
+        <div class="modal">
+            <h3 class="modal__title" id="modal-title"></h3>
+            <p class="modal__message" id="modal-message"></p>
+            <div class="modal__actions">
+                <button class="btn btn--ghost" id="modal-cancel">Cancel</button>
+                <button class="btn btn--danger" id="modal-confirm">Confirm</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Offer Details Modal overlay -->
+    <div class="modal-overlay" id="offer-modal-overlay">
+        <div class="modal" style="max-width: 600px; width: 90%; text-align: left;">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                <h3 class="modal__title" id="offer-modal-title" style="margin-bottom: 0;"></h3>
+                <span id="offer-modal-status"></span>
+            </div>
+
+            <div id="offer-modal-meta" style="margin-bottom: 16px;"></div>
+
+            <div
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; font-size: 0.9rem;">
+                <div><strong style="color: var(--text-600);">Experience:</strong> <span id="offer-modal-exp"></span>
+                </div>
+                <div><strong style="color: var(--text-600);">English:</strong> <span id="offer-modal-eng"></span></div>
+                <div><strong style="color: var(--text-600);">Modality:</strong> <span id="offer-modal-mod"></span></div>
+                <div><strong style="color: var(--text-600);">Salary:</strong> <span id="offer-modal-sal"></span></div>
+            </div>
+
+            <div style="margin-bottom: 24px;">
+                <strong style="color: var(--text-600); display: block; margin-bottom: 8px;">Description</strong>
+                <p id="offer-modal-desc"
+                    style="white-space: pre-wrap; margin: 0; line-height: 1.5; color: var(--text-700); font-size: 0.95rem;">
+                </p>
+            </div>
+
+            <div class="modal__actions" id="offer-modal-actions">
+                <!-- Actions injected dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Offer Test Preview Modal -->
+    <dialog class="candidate-modal test-preview-modal" id="offerTestPreviewModal">
+        <div class="candidate-modal__content">
+            <div class="candidate-modal__head">
+                <div>
+                    <h3 id="offer-preview-test-title">Test Preview</h3>
+                    <p class="muted" id="offer-preview-test-meta"></p>
+                </div>
+                <button class="modal-close-btn" id="closeOfferTestPreview" type="button"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        viewBox="0 0 24 24">
+                        <path
+                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                    </svg></button>
+            </div>
+
+            <div id="offer-preview-questions-container">
+                <!-- Questions rendered by JS -->
+            </div>
+
+            <div class="test-preview__actions">
+                <button class="btn btn--ghost" id="offerPreviewCloseBtn">Close</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- ── COMPANY ONBOARDING OVERLAY ── -->
+    <div class="onboarding-overlay onboarding--hidden" id="companyOnboarding">
+        <div class="onboarding-card">
+
+            <div class="onboarding-header">
+                <img src="../../src/assets/iconoMatchIQ-Imag.png" alt="MatchIQ" class="onboarding-logo" />
+                <h2>Welcome to MatchIQ!</h2>
+                <p>Set up your company profile to start posting offers and connecting with top talent.</p>
+            </div>
+
+            <!-- Progress bar -->
+            <div class="ob-progress">
+                <div class="ob-progress__bar" id="co-progressBar" style="width: 50%"></div>
+            </div>
+
+            <div class="ob-alert" id="coOnboardingAlert" hidden role="alert"></div>
+
+            <!-- Step 1: Company identity -->
+            <div id="co-step-1" class="ob-step">
+                <div class="ob-step__header">
+                    <span class="ob-step__number">Step 1 of 2 — Company Identity</span>
+                    <h3>Tell us about your company</h3>
+                </div>
+                <div class="ob-form-grid">
+                    <div class="ob-field">
+                        <label for="co_companyName">Company Name *</label>
+                        <input class="form-input" id="co_companyName" type="text" placeholder="E.g.: Acme Corp" />
+                    </div>
+                    <div class="ob-field">
+                        <label for="co_location">Location</label>
+                        <input class="form-input" id="co_location" type="text" placeholder="E.g.: Bogotá, Colombia" />
+                    </div>
+                </div>
+                <div class="ob-step__actions">
+                    <button class="btn btn--primary" id="co_nextStep1" type="button">Next →</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Details -->
+            <div id="co-step-2" class="ob-step ob-step--hidden">
+                <div class="ob-step__header">
+                    <span class="ob-step__number">Step 2 of 2 — Additional Details</span>
+                    <h3>A few more details</h3>
+                </div>
+                <div class="ob-form-grid">
+                    <div class="ob-field">
+                        <label for="co_website">Website</label>
+                        <input class="form-input" id="co_website" type="url" placeholder="https://example.com" />
+                    </div>
+                    <div class="ob-field">
+                        <label for="co_description">Company Description</label>
+                        <textarea class="form-textarea" id="co_description" rows="4"
+                            placeholder="What does your company do?"></textarea>
+                    </div>
+                </div>
+                <div class="ob-step__actions">
+                    <button class="btn btn--ghost" id="co_backStep2" type="button">← Back</button>
+                    <button class="btn btn--primary" id="co_saveBtn" type="button">Complete Profile</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="module" src="../../src/pages/company/app.js"></script>
+</body>
+
+</html>

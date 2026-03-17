@@ -1,0 +1,100 @@
+<!-- ─── Profile View Fragment ─── -->
+<header class="main__header">
+    <div>
+        <h1>Company Profile</h1>
+        <p class="muted">Your company information visible to candidates.</p>
+    </div>
+    <div class="header__actions">
+        <button class="btn btn--primary" id="btn-edit-profile" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+            </svg>
+            Edit Profile
+        </button>
+    </div>
+</header>
+
+<!-- Alert -->
+<div class="profile-alert" id="profile-alert" hidden></div>
+
+<!-- ════════ VIEW MODE ════════ -->
+<div id="profile-view">
+
+    <!-- Hero Card -->
+    <section class="card profile-hero">
+        <div class="profile-hero__avatar" id="profile-avatar">?</div>
+        <div class="profile-hero__info">
+            <h2 class="profile-hero__name" id="profile-hero-name">Loading...</h2>
+            <p class="profile-hero__email" id="profile-hero-email">—</p>
+        </div>
+    </section>
+
+    <!-- Info Grid -->
+    <section class="card">
+        <div class="card__head">
+            <h2>Company Details</h2>
+        </div>
+        <div class="profile-details">
+            <div class="profile-detail">
+                <span class="profile-detail__label">Company Name</span>
+                <span class="profile-detail__value" id="view-company-name">—</span>
+            </div>
+            <div class="profile-detail">
+                <span class="profile-detail__label">Email</span>
+                <span class="profile-detail__value" id="view-email">—</span>
+            </div>
+            <div class="profile-detail">
+                <span class="profile-detail__label">Location</span>
+                <span class="profile-detail__value" id="view-location">—</span>
+            </div>
+            <div class="profile-detail">
+                <span class="profile-detail__label">Website</span>
+                <span class="profile-detail__value" id="view-website">—</span>
+            </div>
+        </div>
+
+        <div class="profile-description-block">
+            <span class="profile-detail__label">Description</span>
+            <p class="profile-description-text" id="view-description">No description provided.</p>
+        </div>
+    </section>
+</div>
+
+<!-- ════════ EDIT MODE (hidden via CSS class) ════════ -->
+<div id="profile-edit" class="is-hidden">
+    <form id="profile-form" class="form-card" novalidate>
+
+        <div class="form-group">
+            <label for="profile-company-name">Company Name</label>
+            <input class="form-input" id="profile-company-name" type="text"
+                   placeholder="e.g. MatchIQ Technologies" required />
+            <span class="form-error" id="err-company-name">Company name is required.</span>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="profile-location">Location</label>
+                <input class="form-input" id="profile-location" type="text"
+                       placeholder="e.g. Bogotá, Colombia" />
+            </div>
+            <div class="form-group">
+                <label for="profile-website">Website</label>
+                <input class="form-input" id="profile-website" type="url"
+                       placeholder="https://www.example.com" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="profile-description">Description</label>
+            <textarea class="form-textarea" id="profile-description" rows="5"
+                      placeholder="Tell candidates about your company, culture, and mission..."></textarea>
+        </div>
+
+        <div class="profile-form-actions">
+            <button type="button" class="btn btn--ghost" id="btn-cancel-edit">Cancel</button>
+            <button type="submit" class="btn btn--primary" id="profile-save-btn">
+                <span class="btn__text">Save Changes</span>
+            </button>
+        </div>
+    </form>
+</div>

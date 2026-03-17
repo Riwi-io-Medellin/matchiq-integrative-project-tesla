@@ -1,0 +1,58 @@
+<!-- ─── Matches View Fragment ─── -->
+<header class="main__header">
+    <div>
+        <a href="#/offers" class="back-link">← Back to offers</a>
+        <h1 id="matches-title">Candidate Matches</h1>
+        <p class="muted" id="matches-subtitle">Finding the best candidates for your offer…</p>
+    </div>
+</header>
+
+<!-- KPIs -->
+<div class="kpis" id="matches-kpis" style="display: none;">
+    <div class="kpi">
+        <span class="kpi__label">TOTAL CANDIDATES</span>
+        <strong class="kpi__value" id="match-kpi-total">0</strong>
+    </div>
+    <div class="kpi">
+        <span class="kpi__label">BEST MATCH</span>
+        <strong class="kpi__value" id="match-kpi-best">—</strong>
+    </div>
+    <div class="kpi kpi--accent">
+        <span class="kpi__label">AI EVALUATED</span>
+        <strong class="kpi__value" id="match-kpi-ai">0</strong>
+    </div>
+</div>
+
+<!-- Candidate Cards -->
+<div class="matches-grid" id="matches-container">
+    <!-- JS renders candidate cards here -->
+</div>
+
+<!-- Candidate Profile Modal -->
+<dialog class="candidate-modal" id="candidateModal">
+    <div class="candidate-modal__content" id="candidateModalContent">
+        <!-- All content rendered by JS -->
+    </div>
+</dialog>
+
+<!-- Test Preview Modal -->
+<dialog class="candidate-modal test-preview-modal" id="testPreviewModal">
+    <div class="candidate-modal__content">
+        <div class="candidate-modal__head">
+            <div>
+                <h3 id="preview-test-title">Test Preview</h3>
+                <p class="muted" id="preview-test-meta"></p>
+            </div>
+            <button class="modal-close-btn" id="closeTestPreview" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+        </div>
+
+        <div id="preview-questions-container">
+            <!-- Questions rendered by JS -->
+        </div>
+
+        <div class="test-preview__actions">
+            <button class="btn btn--ghost" id="previewCancelBtn">Cancel</button>
+            <button class="btn btn--primary" id="previewConfirmBtn">Confirm &amp; Send Test</button>
+        </div>
+    </div>
+</dialog>

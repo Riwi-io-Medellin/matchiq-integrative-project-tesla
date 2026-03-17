@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>MatchIQ · Login</title>
+  <link rel="stylesheet" href="../src/styles/login.css" />
+</head>
+
+<body>
+  <div class="bg">
+
+    <header class="topbar">
+      <a class="brand" href="./index.html">
+        <img class="brand__logo" src="../src/assets/iconoMatchIQ-Imag.png" alt="MatchIQ logo" />
+        <span class="brand__name">MatchIQ</span>
+      </a>
+    </header>
+
+    <main class="page">
+      <section class="auth">
+
+        <div class="auth__head">
+          <h1>Platform Access</h1>
+          <p>Sign in using your corporate or personal credentials.</p>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form class="card" id="loginForm" novalidate>
+
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email" placeholder="example@matchiq.com" autocomplete="email" />
+            <p class="field__error" id="emailError" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <div class="field__row">
+              <label for="password">Password</label>
+              <a href="./forgotPassword.html" class="link" id="goRecoverBtn">Forgot your password?</a>
+            </div>
+            <input id="password" name="password" type="password" placeholder="••••••••" autocomplete="current-password" />
+            <p class="field__error" id="passwordError" aria-live="polite"></p>
+          </div>
+
+          <div class="options">
+            <label class="checkbox">
+              <input id="rememberMe" type="checkbox" />
+              <span>Remember me</span>
+            </label>
+          </div>
+
+          <div class="alert" id="loginAlert" hidden role="alert" aria-live="assertive"></div>
+
+          <button class="btn btn--primary" id="loginSubmitBtn" type="submit">
+            <span class="btn__text">Sign in to MatchIQ</span>
+            <span class="btn__spinner" aria-hidden="true"></span>
+          </button>
+
+          <p class="hint" id="loginSuccessHint" hidden>
+            Signed in successfully. Redirecting…
+          </p>
+
+          <div class="divider"></div>
+
+          <a id="googleBtn" href="#" class="btn btn--google">
+            <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.2l6.7-6.7C35.7 2.5 30.2 0 24 0 14.7 0 6.8 5.4 2.9 13.3l7.8 6C12.5 13 17.8 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4 6.9-10 6.9-17z" />
+              <path fill="#FBBC05" d="M10.7 28.7A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.2.8-4.7l-7.8-6A23.9 23.9 0 0 0 0 24c0 3.9.9 7.5 2.5 10.8l8.2-6.1z"/>
+              <path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.8 2.3-8.4 2.3-6.2 0-11.5-4.2-13.4-9.9l-8.2 6.1C6.8 42.6 14.7 48 24 48z"/>
+            </svg>
+            Continue with Google
+          </a>
+
+          <p class="hint">
+            Protected by MatchIQ identity verification
+          </p>
+
+          <div class="divider"></div>
+
+          <div class="register">
+            <div class="register__col">
+              <span class="register__icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg></span>
+              <span class="register__kicker">Looking for a job?</span>
+              <a class="register__link" href="./registerCandidate.html">Talent Registration</a>
+            </div>
+            <div class="register__col">
+              <span class="register__icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg></span>
+              <span class="register__kicker">Are you a recruiter?</span>
+              <a class="register__link" href="./registerCompany.html">Company Registration</a>
+            </div>
+          </div>
+
+        </form>
+
+        <!-- RECOVER FORM -->
+        <form class="card" id="recoverForm" hidden novalidate>
+
+          <div class="auth__head" style="text-align:left; margin:0 0 18px;">
+            <h1 style="margin:0 0 6px; font-size:22px;">Recover Password</h1>
+            <p style="margin:0; color:var(--text-700);">We'll send instructions to your email.</p>
+          </div>
+
+          <div class="field">
+            <label for="recoverEmail">Email Address</label>
+            <input id="recoverEmail" name="recoverEmail" type="email" placeholder="example@matchiq.com" autocomplete="email" />
+            <p class="field__error" id="recoverEmailError" aria-live="polite"></p>
+          </div>
+
+          <div class="alert" id="recoverAlert" hidden role="alert" aria-live="assertive"></div>
+
+          <button class="btn btn--primary" id="recoverSubmitBtn" type="submit">
+            <span class="btn__text">Send recovery link</span>
+            <span class="btn__spinner" aria-hidden="true"></span>
+          </button>
+
+          <p class="hint" id="recoverSuccessHint" hidden>
+            If the email exists, you'll receive recovery instructions.
+          </p>
+
+          <button type="button" class="link link--back" id="backToLoginBtn">← Back to login</button>
+
+        </form>
+
+        <footer class="footnote">
+          AI-BASED RECRUITMENT SYSTEM · MATCHIQ V2.0
+        </footer>
+
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="../src/pages/login.js"></script>
+</body>
+</html>
